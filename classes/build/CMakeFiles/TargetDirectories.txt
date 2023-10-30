@@ -1,0 +1,3 @@
+/home/xichuz/workspace/ruminations/classes/build/CMakeFiles/handle.dir
+/home/xichuz/workspace/ruminations/classes/build/CMakeFiles/edit_cache.dir
+/home/xichuz/workspace/ruminations/classes/build/CMakeFiles/rebuild_cache.dir
