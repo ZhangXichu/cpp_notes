@@ -1,5 +1,9 @@
 # include <iostream>
 
+/**
+ * @brief Handle class with counter in a separate class UPoint
+ * 
+ */
 
 class Point {
     
@@ -119,6 +123,16 @@ int Handle::x() const {
 
 int Handle::y() const {
     return up->p.y();
+}
+
+Handle& Handle::x(int x0) {
+    up->p.x(x0);
+    return *this;
+}
+
+Handle& Handle::y(int y0) {
+    up->p.y(y0);
+    return *this;
 }
 
 int main() {

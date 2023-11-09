@@ -129,6 +129,19 @@ handle/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle.dir/build.make CMakeFiles/handle.dir/build
 .PHONY : handle/fast
 
+#=============================================================================
+# Target rules for targets named handle_p
+
+# Build rule for target.
+handle_p: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 handle_p
+.PHONY : handle_p
+
+# fast build rule for target.
+handle_p/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/build
+.PHONY : handle_p/fast
+
 handle.o: handle.cpp.o
 .PHONY : handle.o
 
@@ -153,6 +166,30 @@ handle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle.dir/build.make CMakeFiles/handle.dir/handle.cpp.s
 .PHONY : handle.cpp.s
 
+handle_p.o: handle_p.cpp.o
+.PHONY : handle_p.o
+
+# target to build an object file
+handle_p.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/handle_p.cpp.o
+.PHONY : handle_p.cpp.o
+
+handle_p.i: handle_p.cpp.i
+.PHONY : handle_p.i
+
+# target to preprocess a source file
+handle_p.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/handle_p.cpp.i
+.PHONY : handle_p.cpp.i
+
+handle_p.s: handle_p.cpp.s
+.PHONY : handle_p.s
+
+# target to generate assembly for a file
+handle_p.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/handle_p.cpp.s
+.PHONY : handle_p.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +199,13 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... handle"
+	@echo "... handle_p"
 	@echo "... handle.o"
 	@echo "... handle.i"
 	@echo "... handle.s"
+	@echo "... handle_p.o"
+	@echo "... handle_p.i"
+	@echo "... handle_p.s"
 .PHONY : help
 
 

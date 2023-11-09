@@ -11,3 +11,4 @@ message(STATUS "CMAKE_SOURCE_DIR = ${CMAKE_SOURCE_DIR}")
 include_directories(${CMAKE_SOURCE_DIR})
 
 add_executable(handle handle.cpp)
+add_executable(handle_p handle_p.cpp)

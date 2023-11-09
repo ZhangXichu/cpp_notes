@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/xichuz/workspace/ruminations/classes/build
 
 # The main recursive "all" target.
 all: CMakeFiles/handle.dir/all
+all: CMakeFiles/handle_p.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,6 +73,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/handle.dir/clean
+clean: CMakeFiles/handle_p.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -99,6 +101,32 @@ handle: CMakeFiles/handle.dir/rule
 CMakeFiles/handle.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle.dir/build.make CMakeFiles/handle.dir/clean
 .PHONY : CMakeFiles/handle.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/handle_p.dir
+
+# All Build rule for target.
+CMakeFiles/handle_p.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xichuz/workspace/ruminations/classes/build/CMakeFiles --progress-num=3,4 "Built target handle_p"
+.PHONY : CMakeFiles/handle_p.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/handle_p.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xichuz/workspace/ruminations/classes/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/handle_p.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xichuz/workspace/ruminations/classes/build/CMakeFiles 0
+.PHONY : CMakeFiles/handle_p.dir/rule
+
+# Convenience name for target.
+handle_p: CMakeFiles/handle_p.dir/rule
+.PHONY : handle_p
+
+# clean rule for target.
+CMakeFiles/handle_p.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/clean
+.PHONY : CMakeFiles/handle_p.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
