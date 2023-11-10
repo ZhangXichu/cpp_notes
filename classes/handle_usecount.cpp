@@ -1,7 +1,7 @@
 # include <iostream>
 
 /**
- * @brief counter is in the Handle class
+ * @brief use class UseCount
  * 
  */
 
@@ -39,6 +39,28 @@ private:
     
 };
 
+class UseCount {
+public:
+    UseCount();
+    UseCount(const UseCount&);
+    UseCount& operator=(const UseCount&);
+    ~UseCount();
+private:
+    int* p;
+};
+
+UseCount::UseCount(): p(new int(1)) {}
+UseCount::UseCount(const UseCount& u): p(u.p) 
+    {
+        ++*p; 
+    }
+UseCount::~UseCount() 
+    {
+        if (--*p == 0) {
+            delete p;
+        }
+    }
+
 class Handle {
 public:
     Handle();
@@ -59,58 +81,5 @@ private:
     Point* p;
     // using Point* instead of UPoint* allows us to not only attach Handle with a Ponter
     // but also to a drived class of Pointer
-    int* u;
+    UseCount u;
 };
-
-Handle::Handle():
-        u(new int(1)), p(new Point) {}
-
-Handle::Handle(int x, int y):
-        u(new int(1)), p(new Point(x, y)) {}
-
-Handle::Handle(const Point& p0):
-        u(new int(1)), p(new Point(p0)) {}
-
-Handle::Handle(const Handle& h):
-    u(h.u), p(h.p) { ++*u; }
-
-Handle& Handle::operator=(const Handle& h)
-{
-    ++*h.u;
-    if (--*u == 0)
-    {
-        delete u;
-        delete p;
-    }
-    u = h.u;
-    p = h.p;
-    return *this;
-}
-
-Handle::~Handle()
-{
-    if (--*u == 0)
-    {
-        delete u;
-        delete p;
-    }
-}
-
-int Handle::handle_count ()
-{
-    return *u;
-}
-
-int main() 
-{
-    Point p1(1, 2);
-    Point p2(3, 4);
-    
-    Handle p1_h1(p1);
-    Handle p1_h2(p1_h1); // create Handle from another Handle to increase the count u
-    Handle p1_h3(p1_h1);
-
-    std::cout << "Number of handles of p1:" << p1_h3.handle_count() << std::endl;
-
-    return 0;
-}

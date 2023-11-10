@@ -10,5 +10,6 @@ message(STATUS "CMAKE_SOURCE_DIR = ${CMAKE_SOURCE_DIR}")
 # Include the directory containing header files
 include_directories(${CMAKE_SOURCE_DIR})
 
-add_executable(handle handle.cpp)
+add_executable(handle_upoint handle_upoint.cpp)
 add_executable(handle_p handle_p.cpp)
+add_executable(handle_usecount handle_usecount.cpp)
