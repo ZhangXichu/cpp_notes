@@ -63,8 +63,9 @@ CMAKE_BINARY_DIR = /home/xichuz/workspace/ruminations/classes/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/handle.dir/all
+all: CMakeFiles/handle_upoint.dir/all
 all: CMakeFiles/handle_p.dir/all
+all: CMakeFiles/handle_usecount.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -72,35 +73,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/handle.dir/clean
+clean: CMakeFiles/handle_upoint.dir/clean
 clean: CMakeFiles/handle_p.dir/clean
+clean: CMakeFiles/handle_usecount.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/handle.dir
+# Target rules for target CMakeFiles/handle_upoint.dir
 
 # All Build rule for target.
-CMakeFiles/handle.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle.dir/build.make CMakeFiles/handle.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle.dir/build.make CMakeFiles/handle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xichuz/workspace/ruminations/classes/build/CMakeFiles --progress-num=1,2 "Built target handle"
-.PHONY : CMakeFiles/handle.dir/all
+CMakeFiles/handle_upoint.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_upoint.dir/build.make CMakeFiles/handle_upoint.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_upoint.dir/build.make CMakeFiles/handle_upoint.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xichuz/workspace/ruminations/classes/build/CMakeFiles --progress-num=3,4 "Built target handle_upoint"
+.PHONY : CMakeFiles/handle_upoint.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/handle.dir/rule: cmake_check_build_system
+CMakeFiles/handle_upoint.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xichuz/workspace/ruminations/classes/build/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/handle.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/handle_upoint.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xichuz/workspace/ruminations/classes/build/CMakeFiles 0
-.PHONY : CMakeFiles/handle.dir/rule
+.PHONY : CMakeFiles/handle_upoint.dir/rule
 
 # Convenience name for target.
-handle: CMakeFiles/handle.dir/rule
-.PHONY : handle
+handle_upoint: CMakeFiles/handle_upoint.dir/rule
+.PHONY : handle_upoint
 
 # clean rule for target.
-CMakeFiles/handle.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle.dir/build.make CMakeFiles/handle.dir/clean
-.PHONY : CMakeFiles/handle.dir/clean
+CMakeFiles/handle_upoint.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_upoint.dir/build.make CMakeFiles/handle_upoint.dir/clean
+.PHONY : CMakeFiles/handle_upoint.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/handle_p.dir
@@ -109,7 +111,7 @@ CMakeFiles/handle.dir/clean:
 CMakeFiles/handle_p.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xichuz/workspace/ruminations/classes/build/CMakeFiles --progress-num=3,4 "Built target handle_p"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xichuz/workspace/ruminations/classes/build/CMakeFiles --progress-num=1,2 "Built target handle_p"
 .PHONY : CMakeFiles/handle_p.dir/all
 
 # Build rule for subdir invocation for target.
@@ -127,6 +129,32 @@ handle_p: CMakeFiles/handle_p.dir/rule
 CMakeFiles/handle_p.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_p.dir/build.make CMakeFiles/handle_p.dir/clean
 .PHONY : CMakeFiles/handle_p.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/handle_usecount.dir
+
+# All Build rule for target.
+CMakeFiles/handle_usecount.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_usecount.dir/build.make CMakeFiles/handle_usecount.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_usecount.dir/build.make CMakeFiles/handle_usecount.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xichuz/workspace/ruminations/classes/build/CMakeFiles --progress-num=5,6 "Built target handle_usecount"
+.PHONY : CMakeFiles/handle_usecount.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/handle_usecount.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xichuz/workspace/ruminations/classes/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/handle_usecount.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xichuz/workspace/ruminations/classes/build/CMakeFiles 0
+.PHONY : CMakeFiles/handle_usecount.dir/rule
+
+# Convenience name for target.
+handle_usecount: CMakeFiles/handle_usecount.dir/rule
+.PHONY : handle_usecount
+
+# clean rule for target.
+CMakeFiles/handle_usecount.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/handle_usecount.dir/build.make CMakeFiles/handle_usecount.dir/clean
+.PHONY : CMakeFiles/handle_usecount.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

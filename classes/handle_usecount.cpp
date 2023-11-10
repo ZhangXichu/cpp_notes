@@ -45,21 +45,56 @@ public:
     UseCount(const UseCount&);
     UseCount& operator=(const UseCount&);
     ~UseCount();
+    bool only();
+    bool reattach(const UseCount&);
+    bool makeonly();
 private:
     int* p;
 };
 
 UseCount::UseCount(): p(new int(1)) {}
+
 UseCount::UseCount(const UseCount& u): p(u.p) 
-    {
-        ++*p; 
-    }
+{
+    ++*p; 
+}
+
 UseCount::~UseCount() 
-    {
-        if (--*p == 0) {
-            delete p;
-        }
+{
+    if (--*p == 0) {
+        delete p;
     }
+}
+
+bool UseCount::only() 
+{
+    return *p == 1;
+}
+
+bool UseCount::reattach(const UseCount& u)
+{
+    ++*u.p;
+    if (--*p == 0) 
+    {
+        delete p;
+        p = u.p;
+        return true;
+    }
+    p = u.p;
+    return false;
+}
+
+bool UseCount::makeonly()
+{
+    if (*p == 1)
+    {
+        return false;
+    }
+    --*p;
+    p = new int(1);
+    return true;
+}
+
 
 class Handle {
 public:
@@ -75,7 +110,7 @@ public:
     int y() const;
     Handle& y(int);
 
-    int handle_count();
+    // int handle_count();
 
 private:
     Point* p;
@@ -83,3 +118,63 @@ private:
     // but also to a drived class of Pointer
     UseCount u;
 };
+
+Handle::Handle(): p(new Point) {}
+
+Handle::Handle(int x, int y): p(new Point(x, y)) {}
+
+Handle::Handle(const Point& p0): p(new Point(p0)) {}
+
+Handle::Handle(const Handle& h): u(h.u), p(h.p) { }
+
+Handle& Handle::operator=(const Handle& h) 
+{
+    if (u.reattach(h.u)) 
+    {
+        delete p;
+    }
+    p = h.p;
+    return *this;
+}
+
+Handle::~Handle()
+{
+    if (u.only())
+    {
+        delete p;
+    }
+}
+
+int Handle::x() const {
+    return p->x();
+}
+
+Handle& Handle::x(int x0) 
+{
+    if(u.makeonly())
+    {
+        p = new Point(*p);
+    }
+    p->x(x0);
+    return *this;
+}
+
+// int Handle::handle_count ()
+// {
+//     return u->p;
+// }
+
+
+int main() 
+{
+    Point p1(1, 2);
+    Point p2(3, 4);
+    
+    Handle p1_h1(p1);
+    Handle p1_h2(p1_h1); // create Handle from another Handle to increase the count u
+    Handle p1_h3(p1_h1);
+
+    // std::cout << "Number of handles of p1:" << p1_h3.handle_count() << std::endl;
+
+    return 0;
+}
