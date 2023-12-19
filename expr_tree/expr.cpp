@@ -9,11 +9,11 @@ std::ostream& operator<< (std::ostream& os, const ExprBase& expr)
 
 void OpExpr::print(std::ostream& os) const
 {
-    os << "(" << _left_expr;
+    os << "(" << *(_left_expr);
     os << _op_name;
     if (_right_expr) // binary operator
     {
-        os << _right_expr;
+        os << *(_right_expr) << ")";
     } else { // unary operator
         os << ")";
     }
