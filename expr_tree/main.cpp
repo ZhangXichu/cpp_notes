@@ -10,9 +10,12 @@ void test()
     // t = Expr("*", t, t);
     // std::cout << t std::endl;
 
-    NumExpr expr(5);
+    auto expr_num_ptr_1 = std::make_unique<NumExpr>(5);
+    auto expr_num_ptr_2 = std::make_unique<NumExpr>(4);
 
-    std::cout << expr << std::endl;
+    OpExpr expr_op("*", std::move(expr_num_ptr_1), std::move(expr_num_ptr_2));
+
+    std::cout << "Case : simple expression : " << expr_op << std::endl;
 }
 
 int main()

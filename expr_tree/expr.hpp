@@ -45,15 +45,15 @@ public:
 
 
 // wrapper class, exposed to user
-class Expr
-{
-private:
-    std::unique_ptr<ExprBase> _expr;
+// class Expr
+// {
+// private:
+//     std::unique_ptr<ExprBase> _expr;
 
-public:
-    Expr();
-    Expr(Expr&& other);
-};
+// public:
+//     Expr();
+//     Expr(Expr&& other);
+// };
 
 
 std::ostream& operator<< (std::ostream& os, const ExprBase& expr);
