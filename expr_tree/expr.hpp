@@ -45,15 +45,20 @@ public:
 
 
 // wrapper class, exposed to user
-// class Expr
-// {
-// private:
-//     std::unique_ptr<ExprBase> _expr;
+class Expr
+{
+private:
+    std::unique_ptr<ExprBase> _expr;
 
-// public:
-//     Expr();
-//     Expr(Expr&& other);
-// };
+public:
+    Expr(int val) : _expr(std::make_unique<NumExpr>(val)) {}
+    Expr(std::string op_name, int value); // unary 
+    Expr(std::string op_name, int value_1, int value_2);  // binary
+    Expr(std::string op_name, Expr&& expr_left, Expr&& expr_right);
+    // Expr(Expr&& other);
+
+    friend std::ostream& operator<< (std::ostream& os, const Expr& expr);
+};
 
 
 std::ostream& operator<< (std::ostream& os, const ExprBase& expr);

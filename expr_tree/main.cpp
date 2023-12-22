@@ -16,6 +16,10 @@ void test()
     OpExpr expr_op("*", std::move(expr_num_ptr_1), std::move(expr_num_ptr_2));
 
     std::cout << "Case : simple expression : " << expr_op << std::endl;
+
+    Expr expr("*", Expr("-", 5), Expr("+", 3, 4));
+
+    std::cout << "Case : compound expression (wrapper): " << expr << std::endl;
 }
 
 int main()
