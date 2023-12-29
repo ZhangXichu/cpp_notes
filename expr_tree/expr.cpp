@@ -16,12 +16,16 @@ std::ostream& operator<< (std::ostream& os, const Expr& expr)
 
 void OpExpr::print(std::ostream& os) const
 {
-    os << "(" << *(_left_expr);
-    os << _op_name;
+    
     if (_right_expr) // binary operator
     {
+        os << "(" << *(_left_expr);
+        os << _op_name;
         os << *(_right_expr) << ")";
     } else { // unary operator
+        os << "(";
+        os << _op_name;
+        os << *(_left_expr);
         os << ")";
     }
 }
