@@ -35,6 +35,11 @@ void NumExpr::print(std::ostream& os) const
     os << _value; 
 }
 
+Expr::Expr(Expr&& other)
+{
+    _expr = std::move(other._expr);
+}
+
 Expr::Expr(std::string op_name, int value)
  : _expr(std::make_unique<OpExpr>(op_name, std::make_unique<NumExpr>(value), nullptr))  
 {}

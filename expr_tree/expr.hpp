@@ -55,7 +55,8 @@ public:
     Expr(std::string op_name, int value); // unary 
     Expr(std::string op_name, int value_1, int value_2);  // binary
     Expr(std::string op_name, Expr&& expr_left, Expr&& expr_right);
-    // Expr(Expr&& other);
+    Expr(Expr&& other);
+    Expr(Expr& other) = delete;
 
     friend std::ostream& operator<< (std::ostream& os, const Expr& expr);
 };

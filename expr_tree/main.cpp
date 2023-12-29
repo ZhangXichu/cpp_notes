@@ -20,6 +20,15 @@ void test()
     Expr expr("*", Expr("-", 5), Expr("+", 3, 4));
 
     std::cout << "Case : compound expression (wrapper): " << expr << std::endl;
+
+    Expr expr2 = Expr("/", Expr("-", 10), Expr("+", 2, 7));
+
+    std::cout << "Case : move (copy elision) : " << expr2 << std::endl;
+
+    Expr expr3 = std::move(expr2);
+
+    std::cout << "Case : move constructor : " << expr3 << std::endl;
+
 }
 
 int main()
