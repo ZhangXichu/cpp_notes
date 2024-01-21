@@ -1,3 +1,0 @@
-/home/xichuz/workspace/ruminations/my_array/build/CMakeFiles/main.dir
-/home/xichuz/workspace/ruminations/my_array/build/CMakeFiles/edit_cache.dir
-/home/xichuz/workspace/ruminations/my_array/build/CMakeFiles/rebuild_cache.dir

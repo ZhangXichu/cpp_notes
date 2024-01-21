@@ -1,3 +1,0 @@
-/home/xichuz/workspace/ruminations/virtual_functions/build/CMakeFiles/main.dir
-/home/xichuz/workspace/ruminations/virtual_functions/build/CMakeFiles/edit_cache.dir
-/home/xichuz/workspace/ruminations/virtual_functions/build/CMakeFiles/rebuild_cache.dir
