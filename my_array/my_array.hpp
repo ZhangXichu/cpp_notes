@@ -14,7 +14,10 @@ public:
     }
 
     // subscription operator
-    T& operator[] (int index); 
+    T& operator[] (int index)
+    {
+        return _data[index];
+    }
     // remove an element at position i
     void remove(int i);
     // add an element to the end

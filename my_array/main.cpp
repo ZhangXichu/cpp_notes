@@ -15,5 +15,7 @@ int main()
     std::cout << "current size : " << arr.get_size() << std::endl;
     std::cout << "current capacity : " << arr.get_capacity() << std::endl;
 
+    std::cout << "the 7th element is :" << arr[6] << std::endl;
+
     return 0;
 }
