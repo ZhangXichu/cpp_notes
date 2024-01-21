@@ -18,7 +18,15 @@ public:
     // remove an element at position i
     void remove(int i);
     // add an element to the end
-    void add(T element);
+    void add(T element) 
+    {
+        _size += 1;
+        if (_size > _capacity)
+        {
+            resize(_capacity*2);
+        } 
+        _data[_size-1] = element;
+    }
     // insert an element at position i
     void insert(T element, int i);
 
@@ -28,7 +36,7 @@ public:
         int num_to_copy = (new_capacity > _size) ? _size : new_capacity;
         for (int i = 0; i < num_to_copy; i++)
         {
-            data_new = _data[i];
+            data_new[i] = _data[i];
         }
         delete[] _data;
         _data = data_new;
@@ -43,6 +51,13 @@ public:
     int get_capacity() const
     {
         return _capacity;
+    }
+
+    void print() const {
+        for (int i = 0; i < _size; ++i) {
+            std::cout << _data[i] << " ";
+        }
+        std::cout << std::endl;
     }
 
 private:
@@ -61,6 +76,11 @@ public:
     int get_value() const
     {
         return _value;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Dummy& dummy) {
+        os << dummy._value;
+        return os;
     }
 
 private:
