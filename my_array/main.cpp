@@ -12,6 +12,11 @@ int main()
     std::cout << "Elements in arr :" << std::endl;
     arr.print();
 
+
+    std::cout << "Elements in arr using conversion operator:" << std::endl;
+    const Dummy* ptr = arr; // Implicit conversion to const Dummy*
+    std::cout << *(ptr+5) << std::endl;
+
     std::cout << "current size : " << arr.get_size() << std::endl;
     std::cout << "current capacity : " << arr.get_capacity() << std::endl;
 

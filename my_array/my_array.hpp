@@ -18,8 +18,17 @@ public:
     {
         return _data[index];
     }
-    // remove an element at position i
-    void remove(int i);
+
+    operator const T*() const
+    {
+        return _data;
+    }
+
+    operator const T*()
+    {
+        return _data;
+    }
+
     // add an element to the end
     void add(T element) 
     {
@@ -30,9 +39,6 @@ public:
         } 
         _data[_size-1] = element;
     }
-    // insert an element at position i
-    void insert(T element, int i);
-
     void resize(int new_capacity)
     {
         T* data_new = new T[new_capacity];
@@ -46,6 +52,7 @@ public:
         _capacity = new_capacity;
     }
 
+    // observer
     int get_size() const
     {
         return _size;
