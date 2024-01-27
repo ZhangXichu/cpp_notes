@@ -2,7 +2,7 @@ template <class T>
 class MyArray {
 
 public:
-    MyArray(int capacity)
+    MyArray(unsigned capacity)
         :_size(capacity),
         _capacity(capacity)
     {
@@ -14,7 +14,7 @@ public:
     }
 
     // subscription operator
-    T& operator[] (int index)
+    T& operator[] (unsigned index)
     {
         return _data[index];
     }
@@ -39,11 +39,11 @@ public:
         } 
         _data[_size-1] = element;
     }
-    void resize(int new_capacity)
+    void resize(unsigned new_capacity)
     {
         T* data_new = new T[new_capacity];
-        int num_to_copy = (new_capacity > _size) ? _size : new_capacity;
-        for (int i = 0; i < num_to_copy; i++)
+        unsigned num_to_copy = (new_capacity > _size) ? _size : new_capacity;
+        for (unsigned i = 0; i < num_to_copy; i++)
         {
             data_new[i] = _data[i];
         }
@@ -53,18 +53,18 @@ public:
     }
 
     // observer
-    int get_size() const
+    unsigned get_size() const
     {
         return _size;
     }
 
-    int get_capacity() const
+    unsigned get_capacity() const
     {
         return _capacity;
     }
 
     void print() const {
-        for (int i = 0; i < _size; ++i) {
+        for (unsigned i = 0; i < _size; ++i) {
             std::cout << _data[i] << " ";
         }
         std::cout << std::endl;
@@ -72,8 +72,8 @@ public:
 
 private:
     T* _data;
-    int _size;
-    int _capacity;
+    unsigned _size;
+    unsigned _capacity;
 };
 
 
