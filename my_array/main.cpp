@@ -1,5 +1,6 @@
 #include <iostream>
 #include "my_array.hpp"
+#include "pointer.hpp"
 
 int main()
 {
@@ -21,7 +22,23 @@ int main()
     std::cout << "current capacity : " << arr.get_capacity() << std::endl;
 
     std::cout << "the 7th element is :" << arr[6] << std::endl;
-    
+
+    // update using point
+    Pointer<Dummy> pointer;
+    pointer.set_array(arr);
+    std::cout << "Elements in arr: " << std::endl;
+    pointer.set_sub(5);
+    pointer.print_arr();
+    Dummy dummy_replace(33);
+    pointer.update(dummy_replace);
+    std::cout << "Elements in arr after update: " << std::endl;
+    pointer.print_arr();
+
+    Dummy dummy_replace2(90);
+    arr.update(6, dummy_replace2);
+    std::cout << "Update arr again: " << std::endl;
+    pointer.print_arr();
+
     int* ptr_x;
     {
         MyArray<int> arr_x(20);

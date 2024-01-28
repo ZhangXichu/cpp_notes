@@ -1,3 +1,7 @@
+#pragma once
+
+#include <iostream>
+
 template <class T>
 class MyArray {
 
@@ -6,7 +10,7 @@ public:
         :_size(capacity),
         _capacity(capacity)
     {
-        _data = new T[capacity];
+        _data = new T[capacity];  // relies on T having default constructor
     }
     ~MyArray()
     {
@@ -15,6 +19,11 @@ public:
 
     // subscription operator
     T& operator[] (unsigned index)
+    {
+        return _data[index];
+    }
+
+    const T& operator[] (unsigned index) const
     {
         return _data[index];
     }
@@ -50,6 +59,15 @@ public:
         delete[] _data;
         _data = data_new;
         _capacity = new_capacity;
+    }
+
+    void update(unsigned n, const T& t)
+    {
+        if (n >= _capacity)
+        {
+            throw "Array subscript out of range";
+        }
+        _data[n] = t;
     }
 
     // observer
