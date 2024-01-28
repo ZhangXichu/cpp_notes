@@ -30,10 +30,11 @@ int main()
     pointer.set_sub(5);
     pointer.print_arr();
     Dummy dummy_replace(33);
-    pointer.update(dummy_replace);
+    *pointer = dummy_replace;
     std::cout << "Elements in arr after update: " << std::endl;
     pointer.print_arr();
 
+    // update MyArray directly
     Dummy dummy_replace2(90);
     arr.update(6, dummy_replace2);
     std::cout << "Update arr again: " << std::endl;

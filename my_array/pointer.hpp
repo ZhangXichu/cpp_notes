@@ -13,11 +13,11 @@ public:
     Pointer()
         : _ap(0), _sub(0) {}
 
-    void update(const T& t)
+    T& operator*() const // sacrifice safety for convenience
     {
         if (_ap == 0)
-            throw "update of unbound Pointer";
-        (*_ap)[_sub] = t;
+            throw "dereference unbound Pointer";
+        return (*_ap)[_sub];
     }
 
     void set_array(MyArray<T>& arr_ref)
