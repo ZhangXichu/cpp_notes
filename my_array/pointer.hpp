@@ -10,57 +10,60 @@ containing subscript and pointer to the corresponding array
 template<class T> class Pointer {
 public:
     Pointer(MyArray<T>& my_array, unsigned sub = 0)
-        : _ap(&my_array._data), _sub(sub) {}
+        : _arr_data_ptr(my_array._data), _sub(sub) 
+        {
+            ++_arr_data_ptr->_use_counts;
+        }
     
     Pointer()
-        : _ap(0), _sub(0) {}
+        : _arr_data_ptr(0), _sub(0) {}
     ~Pointer()
     {
-        if (_ap && --_ap._use_count == 0)
-            delete _ap;
+        if (_arr_data_ptr && --_arr_data_ptr->_use_counts == 0)
+            delete _arr_data_ptr;
     }
 
     // copy constructor
     Pointer(const Pointer<T>& pointer)
-        : _ap(pointer._ap), _sub(pointer._sub) 
+        : _arr_data_ptr(pointer._arr_data_ptr), _sub(pointer._sub) 
     {
-        if (_ap)
-            ++_ap._use_counts;
+        if (_arr_data_ptr)
+            ++_arr_data_ptr->_use_counts;
     }
 
     // copy assignment
     Pointer& operator=(const Pointer<T>& pointer)
     {
-        if (pointer._ap)
-            ++pointer._ap->_use_counts;
-        if (_ap && --_ap->_use_counts == 0)
-            delete _ap;
-        _ap = pointer._ap;
+        if (pointer._arr_data_ptr)
+            ++pointer._arr_data_ptr->_use_counts;
+        if (_arr_data_ptr && --_arr_data_ptr->_use_counts == 0)
+            delete _arr_data_ptr;
+        _arr_data_ptr = pointer._arr_data_ptr;
         _sub = pointer._sub;
         return *this;
     }
 
     T& operator*() const // sacrifice safety for convenience
     {
-        if (_ap == 0)
+        if (_arr_data_ptr == 0)
             throw "dereference unbound Pointer";
-        return (*_ap)[_sub];
+        return (*_arr_data_ptr)[_sub];
     }
 
     void set_array(MyArray<T>& arr_ref)
     {
-        _ap = &arr_ref._data;
+        _arr_data_ptr = &arr_ref._data;
     }
     void set_sub(unsigned sub)
     {
         _sub = sub;
     }
-    void print_arr()
+    int get_use_counts()
     {
-        _ap._data->print();
+        return _arr_data_ptr->_use_counts;
     }
 
 private:
-    ArrayData<T>* _ap;
+    ArrayData<T>* _arr_data_ptr;
     unsigned _sub; 
 };

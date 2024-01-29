@@ -12,5 +12,24 @@ int main()
 
     arr.print();
 
+    Pointer<Dummy> ptr(arr, 2);
+    std::cout << "ptr points to " << *ptr << std::endl;
+    std::cout << "Use count of arr is " << ptr.get_use_counts() << std::endl;
+
+    Pointer<Dummy> ptr2(ptr);
+    std::cout << "Use count of arr is " << ptr.get_use_counts() << std::endl;
+
+    // self assignment
+    ptr2 = ptr2;
+    std::cout << "Use count of arr is " << ptr.get_use_counts() << std::endl;
+
+    MyArray<int>* arr_ptr = new MyArray<int>(10);
+    Pointer<int> ptr3(*arr_ptr, 4);
+    std::cout << "Use count of arr_ptr is " << ptr3.get_use_counts() << std::endl;
+    delete arr_ptr;
+    *ptr3 = 25;
+    std::cout << "arr_ptr is still valid: ptr3 = " << *ptr3 << std::endl;
+
+
     return 0;
 }
