@@ -2,68 +2,24 @@
 
 #include "array_data.hpp"
 #include "my_array.hpp"
+#include "pointer_to_const.hpp"
 
 /*
 class imitating a pointer
 containing subscript and pointer to the corresponding array
 */
-template<class T> class Pointer {
+template<class T> class Pointer : public PointerToConst<T> {
 public:
     Pointer(MyArray<T>& my_array, unsigned sub = 0)
-        : _arr_data_ptr(my_array._data), _sub(sub) 
-        {
-            ++_arr_data_ptr->_use_counts;
-        }
+        : PointerToConst<T>(my_array, sub) {}
     
-    Pointer()
-        : _arr_data_ptr(0), _sub(0) {}
-    ~Pointer()
-    {
-        if (_arr_data_ptr && --_arr_data_ptr->_use_counts == 0)
-            delete _arr_data_ptr;
-    }
+    Pointer() {}
 
-    // copy constructor
-    Pointer(const Pointer<T>& pointer)
-        : _arr_data_ptr(pointer._arr_data_ptr), _sub(pointer._sub) 
+    // https://stackoverflow.com/questions/4643074/why-do-i-have-to-access-template-base-class-members-through-the-this-pointer
+    T& operator*() const 
     {
-        if (_arr_data_ptr)
-            ++_arr_data_ptr->_use_counts;
-    }
-
-    // copy assignment
-    Pointer& operator=(const Pointer<T>& pointer)
-    {
-        if (pointer._arr_data_ptr)
-            ++pointer._arr_data_ptr->_use_counts;
-        if (_arr_data_ptr && --_arr_data_ptr->_use_counts == 0)
-            delete _arr_data_ptr;
-        _arr_data_ptr = pointer._arr_data_ptr;
-        _sub = pointer._sub;
-        return *this;
-    }
-
-    T& operator*() const // sacrifice safety for convenience
-    {
-        if (_arr_data_ptr == 0)
+        if (this->_arr_data_ptr == 0)
             throw "dereference unbound Pointer";
-        return (*_arr_data_ptr)[_sub];
+        return (*(this->_arr_data_ptr))[this->_sub];
     }
-
-    void set_array(MyArray<T>& arr_ref)
-    {
-        _arr_data_ptr = &arr_ref._data;
-    }
-    void set_sub(unsigned sub)
-    {
-        _sub = sub;
-    }
-    int get_use_counts()
-    {
-        return _arr_data_ptr->_use_counts;
-    }
-
-private:
-    ArrayData<T>* _arr_data_ptr;
-    unsigned _sub; 
 };

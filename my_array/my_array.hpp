@@ -8,6 +8,7 @@ template <class T>
 class MyArray {
 
     friend class Pointer<T>;
+    friend class PointerToConst<T>;
 
 public:
     MyArray(unsigned size)

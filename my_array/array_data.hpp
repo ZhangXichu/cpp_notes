@@ -2,6 +2,7 @@
 
 template <class T> class MyArray;
 template <class T> class Pointer;
+template <class T> class PointerToConst;
 
 /**
  * @brief class which wraps the data, not exposed to the user
@@ -13,6 +14,7 @@ class ArrayData
 {
     friend class MyArray<T>;
     friend class Pointer<T>;
+    friend class PointerToConst<T>;
 
     T* _arr_data;
     unsigned _size;

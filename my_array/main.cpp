@@ -1,6 +1,7 @@
 #include <iostream>
 #include "my_array.hpp"
 #include "pointer.hpp"
+#include "pointer_to_const.hpp"
 
 int main()
 {
@@ -29,6 +30,13 @@ int main()
     delete arr_ptr;
     *ptr3 = 25;
     std::cout << "arr_ptr is still valid: ptr3 = " << *ptr3 << std::endl;
+
+
+    const MyArray<Dummy> arr_c(20);
+
+    arr_c.print();
+    PointerToConst<Dummy> ptr_c(arr_c, 5);
+    std::cout << "Use count of arr_c is " << ptr_c.get_use_counts() << std::endl;
 
 
     return 0;
