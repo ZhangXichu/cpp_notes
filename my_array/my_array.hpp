@@ -32,6 +32,11 @@ public:
         return (*_data)[index];
     }
 
+    void resize(unsigned n)
+    {
+        _data->resize(n);
+    }
+
     // observer
     unsigned get_size() const
     {

@@ -44,8 +44,11 @@ class ArrayData
         return _arr_data[n];
     }
 
-    void resize(unsigned new_capacity)
+    void resize(unsigned new_capacity) // when user knows how much to grow the array
     {
+        if (new_capacity == _capacity)
+            return;
+
         T* data_new = new T[new_capacity];
         unsigned num_to_copy = (new_capacity > _size) ? _size : new_capacity;
         for (unsigned i = 0; i < num_to_copy; i++)

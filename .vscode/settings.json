@@ -43,7 +43,8 @@
         "ostream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "cstring": "cpp"
     },
-    "cmake.sourceDirectory": "/home/xichuz/workspace/ruminations/classes"
+    "cmake.sourceDirectory": "/home/xichuz/workspace/ruminations/my_array"
 }
