@@ -21,6 +21,15 @@ public:
             delete _data;
     }
 
+    // can't assign MyArray directly, need to clone the underlying data
+    // due to reference management
+    MyArray& operator=(const MyArray& other)
+    {
+        if (this != &other)
+            _data->clone(*(other._data));
+        return *this;
+    }
+
     // subscription operator
     T& operator[] (unsigned index)
     {
@@ -48,6 +57,11 @@ public:
         return _data->_capacity;
     }
 
+    int get_use_counts()
+    {
+        return _data->_use_counts;
+    }
+
     void print() const {
         _data->print();
     }
@@ -56,7 +70,6 @@ private:
     ArrayData<T>* _data;
 
     MyArray(const MyArray&);
-    MyArray& operator=(const MyArray&);
 };
 
 

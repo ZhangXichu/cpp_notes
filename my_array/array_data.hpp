@@ -70,6 +70,19 @@ class ArrayData
         _arr_data[_size-1] = element;
     }
 
+    void clone(const ArrayData& arr_data)
+    {
+        delete[] _arr_data;
+
+        _size = arr_data._size;
+        _arr_data = new T[_size];
+
+        for (int i = 0; i < _size; i++)
+        {
+            _arr_data[i] = arr_data[i];
+        }
+    }
+
     void print() const {
         for (unsigned i = 0; i < _size; ++i) {
             std::cout << _arr_data[i] << " ";

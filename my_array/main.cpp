@@ -38,6 +38,25 @@ int main()
     PointerToConst<Dummy> ptr_c(arr_c, 5);
     std::cout << "Use count of arr_c is " << ptr_c.get_use_counts() << std::endl;
 
+    // assignment
+    MyArray<int> arr_s(20);
+
+    arr_s[2] = 20;
+    arr_s[3] = 8;
+    arr_s[4] = 44;
+
+    MyArray<int> arr_s2(15);
+
+    std::cout << "arr_s2 before assignment" << std::endl;
+    arr_s2.print();
+
+    arr_s2 = arr_s;
+
+    std::cout << "Use count of arr_s is " << arr_s.get_use_counts() << std::endl;
+    std::cout << "Use count of arr_s2 is " << arr_s2.get_use_counts() << std::endl;
+
+    std::cout << "arr_s2 after assignment" << std::endl;
+    arr_s2.print();
 
     return 0;
 }
