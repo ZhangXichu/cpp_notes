@@ -22,4 +22,46 @@ public:
             throw "dereference unbound Pointer";
         return (*(this->_arr_data_ptr))[this->_sub];
     }
+
+    // prefix operators
+    Pointer& operator++()
+    {
+        ++this->_sub;
+        return this;
+    }
+
+    Pointer& operator--()
+    {
+        --this->_sub;
+        return this;
+    }
+
+    // postfix operators
+     Pointer operator++(int)
+    {
+        Pointer res_ptr = *this;
+        ++this->_sub;
+        return res_ptr;
+    }
+
+    Pointer operator--(int)
+    {
+        Pointer res_ptr = *this;
+        --this->_sub;
+        return res_ptr;
+    }
+
+    Pointer& operator+=(int n)
+    {
+        this->_sub+= n;
+        return *this;
+    }
+
+    Pointer& operator-=(int n)
+    {
+        this->_sub -= n;
+        return *this;
+    }
+
+   
 };
