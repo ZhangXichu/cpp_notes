@@ -27,13 +27,13 @@ public:
     Pointer& operator++()
     {
         ++this->_sub;
-        return this;
+        return *this;
     }
 
     Pointer& operator--()
     {
         --this->_sub;
-        return this;
+        return *this;
     }
 
     // postfix operators

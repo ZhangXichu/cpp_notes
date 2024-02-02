@@ -31,7 +31,6 @@ int main()
     *ptr3 = 25;
     std::cout << "arr_ptr is still valid: ptr3 = " << *ptr3 << std::endl;
 
-
     const MyArray<Dummy> arr_c(20);
 
     arr_c.print();
@@ -57,6 +56,20 @@ int main()
 
     std::cout << "arr_s2 after assignment" << std::endl;
     arr_s2.print();
+
+    // simulate built-in pointer behavior
+    MyArray<int> arr_p(15);
+    arr_p.random_init();
+    std::cout << "Elements in arr_p:" << std::endl;
+    arr_p.print();
+
+    Pointer ptr_p(arr_p, 1);
+    std::cout << "*ptr_p = " << *ptr_p << std::endl;
+    ptr_p++;
+    std::cout << "*ptr_p = " << *ptr_p << std::endl;
+    std::cout << "*ptr_p = " << *(ptr_p+=2) << std::endl;
+    std::cout << "*ptr_p = " << *(++ptr_p) << std::endl;
+
 
     return 0;
 }

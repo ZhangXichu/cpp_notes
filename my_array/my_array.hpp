@@ -46,6 +46,11 @@ public:
         _data->resize(n);
     }
 
+    void random_init()
+    {
+        return _data->random_init();
+    }
+
     // observer
     unsigned get_size() const
     {

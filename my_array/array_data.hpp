@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdlib> 
+
 template <class T> class MyArray;
 template <class T> class Pointer;
 template <class T> class PointerToConst;
@@ -26,6 +28,15 @@ class ArrayData
     ~ArrayData() 
     {
         delete [] _arr_data;
+    }
+
+
+    void random_init()
+    {
+        for (int i = 0; i < _size; i++)
+        {
+            _arr_data[i] = (rand() % 100) + 1;
+        }
     }
 
     const T& operator[](unsigned n) const 
