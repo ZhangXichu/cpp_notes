@@ -51,6 +51,16 @@ public:
         return PointerToConst<T>(*this, n);
     }
 
+    Pointer<T> operator-(int n)
+    {
+        return Pointer<T>(*this, _data->_size - 1 - n); // move backwards in array
+    }
+
+    PointerToConst<T> operator-(int n) const
+    {
+        return PointerToConst<T>(*this, _data->_size - 1 - n);
+    }
+
     void resize(unsigned n)
     {
         _data->resize(n);
