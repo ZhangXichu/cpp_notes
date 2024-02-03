@@ -63,5 +63,8 @@ public:
         return *this;
     }
 
+
+    // TODO: Ruminations p.170 14.1 Completing the Pointer class. Exercise
+
    
 };

@@ -70,6 +70,13 @@ int main()
     std::cout << "*ptr_p = " << *(ptr_p+=2) << std::endl;
     std::cout << "*ptr_p = " << *(++ptr_p) << std::endl;
 
+    // convert array to pointer
+    PointerToConst ptr_add = arr_p + 1;
+    std::cout << "*ptr_add = " << *ptr_add << std::endl;
+
+    MyArray<int> arr_const(15);
+    arr_const.random_init();
+
 
     return 0;
 }

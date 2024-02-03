@@ -41,6 +41,16 @@ public:
         return (*_data)[index];
     }
 
+    Pointer<T> operator+(int n)
+    {
+        return Pointer<T>(*this, n);
+    }
+
+    PointerToConst<T> operator+(int n) const
+    {
+        return PointerToConst<T>(*this, n);
+    }
+
     void resize(unsigned n)
     {
         _data->resize(n);
