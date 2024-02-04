@@ -80,6 +80,10 @@ int main()
     Pointer ptr_sub = arr_p - 4;
     std::cout << "*ptr_sub = " << *ptr_sub << std::endl;
 
+    std::cout << "ptr_sub points to an element in array : " << ptr_sub.has_arr() << std::endl;
+    Pointer<int> ptr_empty;
+    std::cout << "ptr_empty points to an element in array : " << ptr_empty.has_arr() << std::endl;
+
 
     return 0;
 }

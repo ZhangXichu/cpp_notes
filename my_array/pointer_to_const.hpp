@@ -56,6 +56,12 @@ public:
         return (*_arr_data_ptr)[_sub];
     }
 
+    // checks if Pointeer points to an array
+    bool has_arr()
+    {
+        return _arr_data_ptr != 0;
+    }
+
     void set_sub(unsigned sub)
     {
         _sub = sub;
