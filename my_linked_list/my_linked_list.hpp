@@ -10,7 +10,21 @@ public:
         T value;
         Node* next;
         Node* prev;
+
+        Node()
+        {
+            data = 0;
+            next = NULL;
+        }
+
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
     }
+
+    // TODO: insert, delete
 
     class Iterator {
     public:
@@ -21,12 +35,31 @@ public:
         using reference = T&;
         using iterator_category = std::bidirectional_iterator_tag;
 
+        Iterator(Node* node) : m_node(node) {}
+
         Iterator& operator++() {
-
+            m_node = m_node->next;
+            return *this;
         }
 
-        Iterator& operator->() {
-
+        Iterator& operator--() {
+            m_node = m_node->prev;
+            return *this;
         }
+
+        pointer operator->() {
+            return m_node;
+        }
+
+        reference operator*() const {
+            return *m_node;
+        }
+
+    private:
+        Node* m_node;
     };
+
+private:
+    Node* head;
+    Node* tai;
 };
