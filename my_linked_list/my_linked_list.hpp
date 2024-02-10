@@ -13,18 +13,39 @@ public:
 
         Node()
         {
-            data = 0;
+            value = 0;
             next = NULL;
         }
 
-        Node(int data)
+        Node(int value)
         {
-            this->data = data;
+            this->value = value;
             this->next = NULL;
+        }
+    };
+
+    LinkedList()
+    {
+        head = nullptr;
+        tail = nullptr;
+    }
+
+    void add_node(T value)
+    {
+        Node *tmp = new Node(value);
+        tmp->value = value;
+        tmp->next = nullptr;
+
+        if (!head) { // empty linked list
+            head = tmp;
+            tail = tmp;
+        } else {
+            tail->next = tmp;
+            tail = tail->next;
         }
     }
 
-    // TODO: insert, delete
+    // TODO: delete, insert
 
     class Iterator {
     public:
@@ -61,5 +82,5 @@ public:
 
 private:
     Node* head;
-    Node* tai;
+    Node* tail;
 };
