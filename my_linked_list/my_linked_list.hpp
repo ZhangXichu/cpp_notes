@@ -69,16 +69,32 @@ public:
         }
 
         pointer operator->() {
-            return m_node;
+            return &(m_node->value);
         }
 
         reference operator*() const {
-            return *m_node;
+            return m_node->value;
+        }
+
+        friend bool operator==(const Iterator& a, const Iterator& b) {
+            return a.m_node == b.m_node;
+        }
+
+        friend bool operator!=(const Iterator& a, const Iterator& b) {
+            return a.m_node != b.m_node;
         }
 
     private:
         Node* m_node;
     };
+
+    Iterator begin() {
+        return Iterator(head);
+    }
+
+    Iterator end() {
+        return Iterator(tail);
+    }
 
 private:
     Node* head;
