@@ -18,7 +18,7 @@ class SequenceItem {
         if (s)
             s->use_count++;
     }
-    
+
     SequenceItem(const T& t) : use_count(1), data(t), next(nullptr) {}
 
     const T& get_value() {
@@ -83,10 +83,52 @@ public:
             throw "tl of an empty Sequence.";
         }
     }
+
+    int length()
+    {
+        Sequence seq_tl = tl();
+        int res = 1;
+        while (seq_tl) {
+            // seq_tl = seq_tl.tl(); // old way
+            // seq_tl++;  // postfix++
+            ++seq_tl; // prefix++
+            res++;
+        }
+        return res;
+    }
+
+
     // return false if Sequence has no elements; true otherwise
     operator bool() const
     {
         return item != nullptr;
+    }
+
+    // prefix ++
+    Sequence& operator++()
+    {
+        if (item) {
+            SequenceItem<int>* seq_item_ptr = item->next;
+            if (seq_item_ptr) 
+                seq_item_ptr->use_count++;
+            if (--item->use_count == 0)
+                delete item;
+            item = seq_item_ptr;
+        }
+        return *this;
+    }
+
+    // postfix ++
+    Sequence operator++(int) 
+    {
+        Sequence ret = *this;
+        if (item) {
+            --item->use_count;
+            item = item->next;
+            if (item)
+                item->use_count++;
+        }
+        return ret;
     }
 
     // observer

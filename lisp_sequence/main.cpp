@@ -12,6 +12,7 @@ int main()
     sequence = sequence.construct(8, sequence);
 
     sequence.print_all_elements();
+    std::cout << "length of sequence = " << sequence.length() << std::endl;
 
     return 0;
 }
