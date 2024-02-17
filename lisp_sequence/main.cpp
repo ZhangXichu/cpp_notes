@@ -14,5 +14,7 @@ int main()
     sequence.print_all_elements();
     std::cout << "length of sequence = " << sequence.length() << std::endl;
 
+    std::cout << "head of sequence = " << *sequence << std::endl;
+
     return 0;
 }

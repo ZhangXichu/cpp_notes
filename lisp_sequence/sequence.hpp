@@ -131,6 +131,11 @@ public:
         return ret;
     }
 
+    T operator*()
+    {
+        return hd();
+    }
+
     // observer
     void print_all_elements()
     {
