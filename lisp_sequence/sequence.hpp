@@ -1,12 +1,50 @@
+#pragma once
+
+#include <iostream>
+
+template<class T> class Sequence;
+
+template <class T> 
+class SequenceItem {
+    friend class Sequence<T>;
+
+    int use_count;
+    const T data;
+    SequenceItem* next;
+
+    SequenceItem(const T& t, SequenceItem* s);
+    SequenceItem(const T& t) : use_count(1), data(t), next(nullptr) {}
+
+    const T& get_value() {
+        return data;
+    }
+};
+
+
+template <class T> 
+SequenceItem<T>::SequenceItem(const T& t, SequenceItem* s)
+    : use_count(1), data(t), next(s)
+{
+    if (s)
+    {
+        s->use_count++;
+    }
+}
+
 template<class T> class Sequence {
 public:
     // create and return a sequence with no elements
     Sequence()
-        :item(nullptr);
+        :item(nullptr) {}
     // create and return a sequence with first element t and subsequent elements
     // those of s
     Sequence(const T& t, const Sequence& s):
         item(new SequenceItem<T>(t, s.item)) {}
+    // enable "construct(t, s)" instead of "Sequence<T>(t, s)"
+    Sequence construct(const T& t, const Sequence& s)
+    {
+        return Sequence(t, s);
+    }
     // copy constructor
     Sequence(const Sequence& s)
     {
@@ -24,7 +62,7 @@ public:
         return *this;
     }
 
-    ~Sequence();
+    ~Sequence()
     {
         destory(item);
     }
@@ -55,21 +93,32 @@ public:
         return item != nullptr;
     }
 
-private:
-    SequenceItem<T>* item; // head
+    // observer
+    void print_all_elements()
+    {
+        SequenceItem<int>* ptr = item; 
+        while (ptr != nullptr) {
+            std::cout << ptr->get_value() << " ";
+            ptr = ptr->next;
+        }
+        std::cout << std::endl;
+    }
 
-    Sequence(SequenceItem<T>* s) // used form creating a Sequence from a tail
+private:
+    SequenceItem<int>* item; // head
+
+    Sequence(SequenceItem<int>* s) // used form creating a Sequence from a tail
         : item(s)
         {
             if (s) 
                 s->use_count++;
         }
 
-    void destory(SequenceItem* item)
+    void destory(SequenceItem<int>* item)
     {
-        while (item && --item->use == 0)
+        while (item && --item->use_count == 0)
         {
-            SequenceItem* next = item->next;
+            SequenceItem<int>* next = item->next;
             delete item;
             item = next;
         }
@@ -77,25 +126,3 @@ private:
 };
 
 
-template <class T> 
-class SequenceItem {
-    friend class Sequence<T>;
-
-    int use_count;
-    const T data;
-    SequenceItem* next;
-
-    SequenceItem(const T& t, SequenceItem* s);
-    SequenceItem(const T& t) : use_count(1), data(t), next(nullptr) {}
-};
-
-
-template <class T> 
-SequenceItem<T>::SequenceItem(const T& t, SequenceItem* s)
-    : use_count(1), data(t), next(s)
-{
-    if (s)
-    {
-        s->use_count++;
-    }
-}
