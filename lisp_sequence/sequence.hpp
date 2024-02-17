@@ -12,7 +12,13 @@ class SequenceItem {
     const T data;
     SequenceItem* next;
 
-    SequenceItem(const T& t, SequenceItem* s);
+    SequenceItem(const T& t, SequenceItem* s)
+        : use_count(1), data(t), next(s)
+    {
+        if (s)
+            s->use_count++;
+    }
+    
     SequenceItem(const T& t) : use_count(1), data(t), next(nullptr) {}
 
     const T& get_value() {
@@ -20,16 +26,6 @@ class SequenceItem {
     }
 };
 
-
-template <class T> 
-SequenceItem<T>::SequenceItem(const T& t, SequenceItem* s)
-    : use_count(1), data(t), next(s)
-{
-    if (s)
-    {
-        s->use_count++;
-    }
-}
 
 template<class T> class Sequence {
 public:
