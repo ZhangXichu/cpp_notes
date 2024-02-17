@@ -136,6 +136,12 @@ public:
         return hd();
     }
 
+    Sequence& insert(const T& t)
+    {   
+        item = new SequenceItem<T>(t, item);
+        return *this;
+    }
+
     // observer
     void print_all_elements()
     {
