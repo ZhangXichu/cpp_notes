@@ -208,16 +208,10 @@ Sequence<T> merge(const Sequence<T>& seq_x, const Sequence<T>& seq_y)
     T xh = *seq_x;
     T yh = *seq_y;
 
-    std::cout << "xh = " << xh << std::endl;
-    std::cout << "yh = " << yh << std::endl;
-
     // compare
-    if (xh < yh) {
-        std::cout << "append xh " << xh << " to seq_y:" << std::endl;
-        seq_y.print_all_elements();
+    if (xh < yh)
         return construct(xh, merge(seq_x.tl(), seq_y));
-    }
-    std::cout << "append yh " << yh << std::endl;
+
     return construct(yh, merge(seq_x, seq_y.tl()));
 }
 
