@@ -10,12 +10,12 @@ class SequenceItem {
 
     int use_count;
     const T data;
-    SequenceItem* next;
+    SequenceItem* next=nullptr;
 
     SequenceItem(const T& t, SequenceItem* s)
         : use_count(1), data(t), next(s)
     {
-        if (s)
+        if (s != nullptr)
             s->use_count++;
     }
 
@@ -36,11 +36,6 @@ public:
     // those of s
     Sequence(const T& t, const Sequence& s):
         item(new SequenceItem<T>(t, s.item)) {}
-    // enable "construct(t, s)" instead of "Sequence<T>(t, s)"
-    Sequence construct(const T& t, const Sequence& s)
-    {
-        return Sequence(t, s);
-    }
     // copy constructor
     Sequence(const Sequence& s)
     {
@@ -48,6 +43,14 @@ public:
             item->use_count++;
         }
     }
+
+    // construct from built-in array
+    Sequence(const T* arr, int n) {
+        for (int i = 0; i < n; i++) {
+            insert(arr[i]);
+        }
+    }
+
     // copy asssignment
     Sequence& operator=(const Sequence& s)
     {
@@ -154,7 +157,7 @@ public:
     }
 
 private:
-    SequenceItem<int>* item; // head
+    SequenceItem<int>* item=nullptr; // head
 
     Sequence(SequenceItem<int>* s) // used form creating a Sequence from a tail
         : item(s)
@@ -174,4 +177,34 @@ private:
     }
 };
 
+
+// enable "construct(t, s)" instead of "Sequence<T>(t, s)"
+template <class T>
+Sequence<T> construct(const T& t, const Sequence<T>& s)
+{
+    return Sequence<T>(t, s);
+}
+
+
+/**
+ * use Sequence for merge sort
+*/
+
+
+template <class T>
+Sequence<T> merge(const Sequence<T>& seq_x, const Sequence<T>& seq_y)
+{
+    // if one sequence is empty, return the other
+    if (!seq_x) return seq_y; 
+    if (!seq_y) return seq_x; 
+
+    // both are non-empty, extract the first element
+    T xh = *seq_x;
+    T yh = *seq_y;
+
+    // compare
+    if (xh < yh)
+        return construct(xh, merge(seq_x.tl(), seq_y));
+    return construct(yh, merge(seq_x, seq_y.tl()));
+}
 
