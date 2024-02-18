@@ -229,3 +229,16 @@ void split(Sequence<T> seq_x, Sequence<T>& seq_y, Sequence<T>& seq_z)
     }
 }
 
+template<class T> 
+Sequence<T> sort(const Sequence<T>& x)
+{
+    if (!x || !x.tl())
+        return x;
+    
+    Sequence<T> p, q;
+
+    split(x, p, q);
+    return merge(sort(p), sort(q));
+}
+
+

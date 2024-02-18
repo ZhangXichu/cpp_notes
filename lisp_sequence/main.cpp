@@ -33,13 +33,18 @@ int main()
     std::cout << "after merge seq_x and seq_y : ";
     seq_m_xy.print_all_elements();
 
+    int arr_input[] = {62, 111, 106, 57, 126};
+    Sequence<int> seq_input(arr_input, 5);
     Sequence<int> part1, part2;
-    split(seq_x, part1, part2);
+    split(seq_input, part1, part2);
 
     std::cout << "seq_x part1: ";
     part1.print_all_elements();
     std::cout << "seq_x part2: ";
     part2.print_all_elements();
+
+    std::cout << "sorted: ";
+    sort(seq_input).print_all_elements();
 
     return 0;
 }
