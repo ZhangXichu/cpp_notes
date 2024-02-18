@@ -24,5 +24,10 @@ int main()
     Sequence<int> seq_x(arr_1, 10);
     Sequence<int> seq_y(arr_2, 8);
 
+    std::cout << "elements in seq_x : ";
+    seq_x.print_all_elements();
+    std::cout << "elements in seq_y : ";
+    seq_y.print_all_elements();
+
     return 0;
 }
