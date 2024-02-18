@@ -29,5 +29,10 @@ int main()
     std::cout << "elements in seq_y : ";
     seq_y.print_all_elements();
 
+    Sequence<int> seq_m_xy = merge(seq_x, seq_y);
+    std::cout << "after merge seq_x and seq_y : ";
+    seq_m_xy.print_all_elements();
+    // std::cout << "seq_m_xy length: " << seq_m_xy.length() << std::endl;
+
     return 0;
 }

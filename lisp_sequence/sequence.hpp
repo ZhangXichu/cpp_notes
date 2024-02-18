@@ -38,6 +38,7 @@ public:
         item(new SequenceItem<T>(t, s.item)) {}
     // copy constructor
     Sequence(const Sequence& s)
+        : item(s.item)
     {
         if (item) {
             item->use_count++;
@@ -45,8 +46,8 @@ public:
     }
 
     // construct from built-in array
-    Sequence(const T* arr, int n) {
-        for (int i = 0; i < n; i++) {
+    Sequence(const T* arr, int n) : item(nullptr) {
+        for (int i = n-1; i >= 0; i--) {
             insert(arr[i]);
         }
     }
@@ -134,7 +135,7 @@ public:
         return ret;
     }
 
-    T operator*()
+    T operator*() const
     {
         return hd();
     }
@@ -146,7 +147,7 @@ public:
     }
 
     // observer
-    void print_all_elements()
+    void print_all_elements() const
     {
         SequenceItem<int>* ptr = item; 
         while (ptr != nullptr) {
@@ -195,16 +196,28 @@ template <class T>
 Sequence<T> merge(const Sequence<T>& seq_x, const Sequence<T>& seq_y)
 {
     // if one sequence is empty, return the other
-    if (!seq_x) return seq_y; 
-    if (!seq_y) return seq_x; 
+    if (!seq_x) {
+        seq_y.print_all_elements();
+        return seq_y; 
+    }
+    if (!seq_y) {
+        return seq_x;
+    }  
 
     // both are non-empty, extract the first element
     T xh = *seq_x;
     T yh = *seq_y;
 
+    std::cout << "xh = " << xh << std::endl;
+    std::cout << "yh = " << yh << std::endl;
+
     // compare
-    if (xh < yh)
+    if (xh < yh) {
+        std::cout << "append xh " << xh << " to seq_y:" << std::endl;
+        seq_y.print_all_elements();
         return construct(xh, merge(seq_x.tl(), seq_y));
+    }
+    std::cout << "append yh " << yh << std::endl;
     return construct(yh, merge(seq_x, seq_y.tl()));
 }
 
