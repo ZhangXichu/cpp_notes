@@ -33,5 +33,13 @@ int main()
     std::cout << "after merge seq_x and seq_y : ";
     seq_m_xy.print_all_elements();
 
+    Sequence<int> part1, part2;
+    split(seq_x, part1, part2);
+
+    std::cout << "seq_x part1: ";
+    part1.print_all_elements();
+    std::cout << "seq_x part2: ";
+    part2.print_all_elements();
+
     return 0;
 }

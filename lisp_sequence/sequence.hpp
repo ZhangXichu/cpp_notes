@@ -215,3 +215,17 @@ Sequence<T> merge(const Sequence<T>& seq_x, const Sequence<T>& seq_y)
     return construct(yh, merge(seq_x, seq_y.tl()));
 }
 
+
+template<class T> 
+void split(Sequence<T> seq_x, Sequence<T>& seq_y, Sequence<T>& seq_z)
+{
+    while (seq_x) 
+    {
+        seq_y.insert(seq_x.hd());
+        if (++seq_x) {
+            seq_z.insert(seq_x.hd());
+            ++seq_x;
+        }
+    }
+}
+
