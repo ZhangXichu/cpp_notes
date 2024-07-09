@@ -21,6 +21,21 @@ class SequenceItem {
 
     SequenceItem(const T& t) : use_count(1), data(t), next(nullptr) {}
 
+    Sequence<T> owntail()
+    {
+        if (item == 0)
+            return 0;
+        SequenceItem* i = item;
+        SequenceItem** p = &item;
+
+        while (i->use_count == 1) {
+            if (i->next == nullptr)
+                return i;
+            p = &i->next;
+            i = i->next;
+        }
+    }
+
     const T& get_value() {
         return data;
     }
