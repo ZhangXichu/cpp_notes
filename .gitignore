@@ -3,3 +3,4 @@ my_array/build
 my_linked_list/build
 playground/
 lisp_sequence/build
+posix/free_and_sbrk/build

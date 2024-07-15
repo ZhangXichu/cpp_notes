@@ -1,3 +1,0 @@
-/home/xichuz/workspace/cpp_notes/posix/free_and_sbrk/build/CMakeFiles/free_and_sbrk.dir
-/home/xichuz/workspace/cpp_notes/posix/free_and_sbrk/build/CMakeFiles/edit_cache.dir
-/home/xichuz/workspace/cpp_notes/posix/free_and_sbrk/build/CMakeFiles/rebuild_cache.dir
